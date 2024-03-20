@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="App" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="ru.browser.app.browser.JavaFxBrowser" />
+    <module name="Browser" />
+    <option name="VM_PARAMETERS" value="--module-path PATH_TO_FX\lib --add-modules javafx.swing,javafx.graphics,javafx.fxml,javafx.media,javafx.controls,javafx.web" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

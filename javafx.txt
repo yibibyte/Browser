@@ -15,3 +15,50 @@ tar -xf javafx.zip -C %INSTALL_DIR%
 del javafx.zip
 
 echo JavaFX 21 успешно установлен в %INSTALL_DIR%
+
+
+Испорт настроек IDEA
+File -> Export Settings. Выбираете что сохранять, сохраняете, в новой системе там же выбираете Import Settings
+File -> Manage IDE Settings -> Export Settings... - Выбираем что сохранить - выгружаем в архив. File -> Manage IDE Settings -> Import Settings... - Загружаем настройки из архива.
+
+C:\Users\Гневашев\Desktop
+C:\Users\Гневашев\AppData\Roaming\JetBrains\IntelliJIdea2024.1\settings.zip
+
+Чтобы перенести настройки из IntelliJ IDEA, вам следует выполнить следующие шаги:
+
+1. Откройте IntelliJ IDEA, из которой вы хотите экспортировать настройки.
+2. В верхнем меню выберите "File" (Файл) -> "Export Settings" (Экспорт настроек).
+3. Выберите настройки, которые вы хотите экспортировать, и укажите место для сохранения файла настроек.
+4. Нажмите "OK" и дождитесь завершения процесса экспорта.
+5. Теперь откройте другую версию IntelliJ IDEA, в которую вы хотите импортировать настройки.
+6. В верхнем меню выберите "File" (Файл) -> "Import Settings" (Импорт настроек).
+7. Укажите путь к файлу настроек, который вы экспортировали ранее, и выберите настройки, которые вы хотите импортировать.
+8. Нажмите "OK" и перезапустите IntelliJ IDEA для применения импортированных настроек.
+
+
+Скрипт для копирования javafx-sdk-17 из общей директории:
+
+@echo off
+set "source_folder=Z:\Install316\javafx-sdk-17.0.10"
+set "destination_folder=D:\Installed\javafx-sdk-17.0.10"
+rem Копирование папки с файлами
+xcopy "%source_folder%" "%destination_folder%" /E /I
+rem Установка переменной среды для указания на скопированную папку
+setx PATH_TO_FX "%destination_folder%"
+echo %PATH_TO_FX%
+
+
+@echo off
+set "project_path=C:\Users\USER\IdeaProjects\Graph"
+set "javafx_path=D:\Installed\javafx-sdk-17.0.10\lib"
+set "vm_options=--module-path %javafx_path% --add-modules=javafx.controls,javafx.fxml,javafx.base"
+set "idea_path=C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2021.2.3\bin\idea64.exe"
+start "" "%idea_path%" "%project_path%" --vm-options "%vm_options%"
+
+В IntelliJ IDEA настройки конфигурации запуска проекта хранятся в файле `workspace.xml`, который находится в директории `.idea` в корне вашего проекта. Этот файл содержит информацию о настройках запуска приложения, включая параметры запуска, переменные среды, аргументы командной строки и т. д.
+Чтобы перенести все профили конфигурации запуска из одного проекта в другой, вам нужно скопировать соответствующие блоки из файла `workspace.xml` одного проекта в файл `workspace.xml` другого проекта. Пожалуйста, убедитесь, что оба проекта настроены схожим образом, чтобы избежать конфликтов при импорте настроек.
+Не забудьте сделать резервную копию файлов `workspace.xml` перед внесением изменений, чтобы в случае проблем можно было вернуться к предыдущему состоянию.
+
+
+
+--module-path PATH_TO_FX\lib --add-modules javafx.swing,javafx.graphics,javafx.fxml,javafx.media,javafx.controls,javafx.web
