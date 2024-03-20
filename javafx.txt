@@ -1,3 +1,8 @@
+
+Проект Browser находится по пути
+Z:\Install316\Browser
+
+
 @echo off
 set JAVA_FX_URL=https://download2.gluonhq.com/javafx/21.0.2/javafx-sdk-21.0.2.zip
 set INSTALL_DIR=C:\JavaFX
@@ -60,5 +65,32 @@ start "" "%idea_path%" "%project_path%" --vm-options "%vm_options%"
 Не забудьте сделать резервную копию файлов `workspace.xml` перед внесением изменений, чтобы в случае проблем можно было вернуться к предыдущему состоянию.
 
 
-
+Добавление настройки конфигурации для добавления библиотекв проект:
 --module-path PATH_TO_FX\lib --add-modules javafx.swing,javafx.graphics,javafx.fxml,javafx.media,javafx.controls,javafx.web
+
+
+
+===Maven
+
+Для скачивания Apache Maven с интернета через командную строку (cmd) вы можете использовать утилиту curl или powershell. Вот как это можно сделать:
+
+1. Скачивание Maven с помощью curl:
+curl -o apache-maven.zip https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.zip
+
+2. Распакуйте скачанный архив в директорию:
+@rem expand <путь_к_архиву_maven> -F:* <путь_к_распаковке>
+expand D:\Installed\apache-maven.zip -F:* D:\Installed
+
+mkdir D:\Installed\apache-maven
+expand D:\Installed\apache-maven.zip -F:* D:\Installed\apache-maven
+unzip  D:\Installed\apache-maven.zip -F:* D:\Installed\apache-maven
+for %i in (*.zip) do @(md "%~ni" 2>nul & unzip.exe "%i" -d "%~ni")
+
+3. Установите переменную среды M2_HOME, указав путь к распакованной папке Maven:
+setx M2_HOME "<путь_к_папке_maven>"
+
+4. Добавьте %M2_HOME%\bin в переменную среды PATH, чтобы можно было запускать Maven из любой директории:
+setx PATH "%PATH%;%M2_HOME%\bin"
+
+Перезапустите командную строку и попробуйте запустить `mvn -version` для проверки успешной установки Maven.
+

@@ -2,7 +2,7 @@
   <configuration default="false" name="App" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="ru.browser.app.browser.JavaFxBrowser" />
     <module name="Browser" />
-    <option name="VM_PARAMETERS" value="--module-path &quot;PATH_TO_FX\lib&quot; --add-modules javafx.swing,javafx.graphics,javafx.fxml,javafx.media,javafx.controls,javafx.web" />
+    <option name="VM_PARAMETERS" value="--module-path D:\Installed\javafx-sdk-17.0.10\lib --add-modules javafx.graphics,javafx.fxml,javafx.media,javafx.controls,javafx.web,javafx.swing" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>
